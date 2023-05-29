@@ -69,9 +69,11 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with: 
+      artifact-name: dist-files
   report:
     needs: [lint, deploy]
-    if: failure()
+    if: failure() 
     runs-on: ubuntu-latest
     steps:
       - name: Output information
